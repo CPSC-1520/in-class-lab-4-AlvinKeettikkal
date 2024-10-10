@@ -1,6 +1,35 @@
 
 // Enter your code below.
 
+let newOrderForm = document.querySelector("#new-order-form");
+
+newOrderForm.addEventListener("submit", handleFormSubmit);
+
+function handleFormSubmit(event) {
+  
+  event.preventDefault();
+
+
+  let formElements = event.target.elements;
+  let orderItemName = formElements["order-item-name"].value.trim();
+  let orderItemPrice = parseFloat(formElements["order-item-price"].value.trim());
+  let orderSize = formElements["order-size"].value.trim();
+
+
+  let isFormValid = true;
+
+
+  let nameInput = formElements["order-item-name"];
+  if (isValueNotEmpty(orderItemName)) {
+    nameInput.classList.remove("is-invalid");
+  } else {
+    nameInput.classList.add("is-invalid");
+    isFormValid = false;
+  }
+
+  
+}
+
 
 // functions needed for assessment (do not change.)
 
