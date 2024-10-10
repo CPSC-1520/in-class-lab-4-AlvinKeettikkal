@@ -27,7 +27,33 @@ function handleFormSubmit(event) {
     isFormValid = false;
   }
 
-  
+  let priceInput = formElements["order-item-price"];
+  if (isValueNotEmpty(orderItemPrice) && isGreaterThanFive(orderItemPrice)) {
+    priceInput.classList.remove("is-invalid");
+  } else {
+    priceInput.classList.add("is-invalid");
+    isFormValid = false;
+  }
+
+
+  let sizeInput = formElements["order-size"];
+  if (isValueNotEmpty(orderSize)) {
+    sizeInput.classList.remove("is-invalid");
+  } else {
+    sizeInput.classList.add("is-invalid");
+    isFormValid = false;
+  }
+
+
+  if (isFormValid) {
+    addOrderItem(orderItemName, orderItemPrice.toFixed(2), orderSize);
+    event.target.reset();
+
+
+    nameInput.classList.remove("is-invalid");
+    priceInput.classList.remove("is-invalid");
+    sizeInput.classList.remove("is-invalid");
+  }
 }
 
 
